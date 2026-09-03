@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>620</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>File XOR Processor</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayoutMain">
+    <item>
+     <widget class="QGroupBox" name="grpConfig">
+      <property name="title">
+       <string>Параметры обработки</string>
+      </property>
+      <layout class="QVBoxLayout" name="layoutGrp">
+       <item>
+        <layout class="QGridLayout" name="gridLayoutDirs">
+         <item row="0" column="0">
+          <widget class="QLabel" name="lblInputDir">
+           <property name="text">
+            <string>Папка поиска файлов:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="leInputDir">
+           <property name="placeholderText">
+            <string>Путь к папке с исходными файлами</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lblOutputDir">
+           <property name="text">
+            <string>Папка сохранения:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="leOutputDir">
+           <property name="placeholderText">
+            <string>Путь к папке для сохранения результата</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="lblMask">
+           <property name="text">
+            <string>Маска файлов:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="leFileMask">
+           <property name="text">
+            <string>*.*</string>
+           </property>
+           <property name="placeholderText">
+            <string>например: *.txt;*.bin</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="lblHex">
+           <property name="text">
+            <string>HEX ключ (8 байт):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="leHexMask">
+           <property name="maxLength">
+            <number>16</number>
+           </property>
+           <property name="placeholderText">
+            <string>1234567890ABCDEF</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="chkDeleteSource">
+         <property name="text">
+          <string>Удалять входные файлы после успешной обработки</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="grpCollision">
+         <property name="title">
+          <string>Действие при повторении имени выходного файла</string>
+         </property>
+         <layout class="QHBoxLayout" name="layoutCollision">
+          <item>
+           <widget class="QRadioButton" name="radioOverwrite">
+            <property name="text">
+             <string>Перезапись</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioAppendCounter">
+            <property name="text">
+             <string>Добавить счетчик к имени файла (_1, _2...)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutTimer">
+         <item>
+          <widget class="QCheckBox" name="chkPeriodic">
+           <property name="text">
+            <string>Работа по таймеру (периодический опрос)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblTimerSec">
+           <property name="text">
+            <string>Интервал (сек):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spnIntervalSec">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>3600</number>
+           </property>
+           <property name="value">
+            <number>5</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="grpProgress">
+      <property name="title">
+       <string>Прогресс и статус</string>
+      </property>
+      <layout class="QVBoxLayout" name="layoutProgress">
+       <item>
+        <widget class="QLabel" name="lblStatus">
+         <property name="text">
+          <string>Готов к работе</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QProgressBar" name="progressBarFile">
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="layoutControls">
+      <item>
+       <widget class="QPushButton" name="btnStart">
+        <property name="text">
+         <string>Старт</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnPause">
+        <property name="text">
+         <string>Пауза</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnStop">
+        <property name="text">
+         <string>Стоп</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>620</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,20 @@
+# CMake / Qt Creator builds
+build/
+build-*/
+CMakeLists.txt.user*
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Binaries & Objects
+*.exe
+*.dll
+*.o
+*.obj
+*.a
+*.lib
+
+# Autogen files
+*_autogen/
+.rcc/
+.qt/
